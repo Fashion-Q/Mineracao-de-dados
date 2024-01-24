@@ -1,0 +1,21 @@
+import pandas as pd
+//df = DataFrame
+
+df = pd.read_excel('Caminho.xls')
+df = pd.read_csv('Caminho.csv')
+df.head();//default 5 linhas
+df.head(10...);
+df.columns //mostra as colunas
+df.query("Language == 'en'") //mesma coisa da de baixo
+df['job'][df['job] == 'Lawyer'].count() //contar quantas pessoas tem o trabalho advogado
+df.loc[df['language'] == 'en'] //filtra pra lingua inglesa
+df.loc[df['language'] == 'en'].shape //mostra os registros
+df.loc[(df['NomeVendedor'] == 'en' & df['ValorVenda'] == 99.50)]
+df.info();//informacoes dos registros.
+df.shape(); //mostra a dimensao, 10000 linhas para 14 colunas
+df['NomeColuna']
+df.mean() //retorna a média de TODAS que podem ser calculadas
+df['NomeColuna'].mean() //retorna a média
+df[['NomeColuna1','NomeColuna2']].mean() //retorna a média de cada
+df.sort_values(by="NomeColuna", ascending=False)
+df[['Colum1','Column2']].groupby(['Valor_Venda'], as_index=False).count().sort_values(by=['Column1'])
