@@ -1,0 +1,12 @@
+import pandas as pd
+
+df = pd.read_csv("caminho")
+df.groupby('state').count();
+df_sergipe = df.loc[df['state'] == 'SE']
+df_sergipe.head()
+df_sergipe[['date','cases','deaths']].groupby('date').sum()
+ultimos_relatorios = df_sergipe.groupby('mes',as_index=False).max()['date']
+for relatorios in ultimos_relatorios:
+	cidades = df_sergipe.loc[df_sergipe['date']==relatorio]
+	print (relatorio,cidades['cases'].sum(), cidades['deaths'].sum())
+

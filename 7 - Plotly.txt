@@ -1,0 +1,42 @@
+************** PANDAS - DataFrame Documentation **************************** PLOTLY - Graphyc Documentation **************
+
+import plotly.graph_objects as go
+
+df_sergipe['mes'] = df_sergipe['date'].apply(lambda row: int(row.split('-')[1]))
+
+casos_mes = []
+ultimos_relatorios = df_sergipe.groupby('mes',as_index=False).max()
+for relatorio in ultimos_relatorios:
+	cidades = df_sergipe.loc[df_sergipe['date'] == relatorio]
+	casos_mes.append([relatorio.split('-')[1],cidades['cases].sum(),cidades['deaths'].sum()])
+
+df_sergipe_mes = pd.DataFrame(data=casos_mes,columns=['mes','casos','obitos'])
+	
+************** LINHA **************
+
+fig = go.Figure()//pode passar um array qye sao os graficos"data=graficos"
+
+fig.add_trace()
+//os graficos normalmente esperam X-Y, onde X é coluna, Y = linha
+fig.append_trace(go.Scatter(x=df_sergipe_mes['mes'],df_sergipe_mes['casos'],name='Casos'))
+fig.append_trace(go.Scatter(x=df_sergipe_mes['mes'],df_sergipe_mes['obitos'],name='Obitos'))
+//fig.append_trace(go.Scatter(x=df_sergipe_mes['mes'],df_sergipe_mes['obitos'],name='Obitos',mode='markers'))
+
+fig.update_layout(title='Casos de Coronanavirus em Sergipe por mes')
+fig.show()
+
+
+************** BARRA **************
+fig = go.Figure()
+
+fig.add_trace(go_Bar(x=df_sergipe_mes['mes'],y=def_sergipe_mes['casos'],name='casos'),text=df_sergipe_mes['casos'],textposition='auto')
+fig.add_trace(go_Bar(x=df_sergipe_mes['mes'],y=def_sergipe_mes['obtos'],name='Obitos'),text=df_sergipe_mes['obitos'],textposition='auto')
+
+//sem o stack nao consegue-saber os casos, ja que um obito nao esta dentro dos casos
+fig.update_layout(title='Casos de Coronanavirus em Sergipe por mes',barmode='stack')
+fig.show()
+
+df_itabaiana = df_sergipe.loc[(df_sergipe['name'] == 'itabaiana') & (df_sergipe['cases']>0]
+//só mostrar nos graficos
+
+

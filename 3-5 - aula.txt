@@ -1,0 +1,75 @@
+			*** Comandos Python ***
+
+lista = [0,1,[1,3,2],"Oi"]
+for i, item in enumerate(lista)
+	print(i)
+	break
+	print(item)
+	
+	#range(5)
+	
+************** PANDAS - DataFrame Documentation **************
+	import pandas as pd
+	df = pd.read_csv("caminho")
+	
+	df.loc[df['B'].isna()] // resgata cpçimas onde tem nulos
+	df.loc[df['B'].notna()] // retorna onde nao eh nulo
+	df.fillna(value = 'Algum valor')
+	df.fillna(df['hoa (R$)'].median())
+	df['A'].fillna(df['A'].mean())// onde tem nulo, pega a media de geral e preenche
+	df.dropna() | df.['Purchase Price'].dropna()
+	df.isna().sum() | sum ou count()
+	df.dropna(subset=['rent amount R$'],inplace=True || df['city'].dropna()
+	df['hoa (R$)'].median()
+	df.fillna(df['hoa (R$)'].median())
+	df['hoa (R$)'].fillna(df['hoa (R$'].median(), implace=True)
+	df['city'].fillna(df['city'].value_counts().index[0],inplace=True)
+	
+	df.loc[df['city']].isna()
+	df['city'].value_counts()
+	df['city'].fillna(df['city'].value_counts().index[0], Implace=True)
+	
+	shape_anterior = df.shape
+	print(shape_anterior)
+	
+
+	### Group By
+	df.groupby('Empresa').mean() //.min .max
+	df.describe() // mostra a quantidade, testar depois
+	df.info()// qntidades de linhas, colunhas, registros etc
+	df.loc(df['Nome'].str.startwith('A')) | (df['Nome']str.startwith('S')].mean()
+	df.query("nome == 'Acymar'")
+	df.conct([df1,df2,df3])
+	df.sort_values(by=['Purchase Price'], ascending=False)
+	
+	
+	# Quantas linhas e colunas existem?
+		df.info() | df.shape
+	# Qual é o preço de compra médio?
+		df['Purchase Price'].mean();
+	# Quais compras mais alto e mais baixo?
+		df['Purchase Price'].max()
+		df['Purchase Price'].min()
+	# Quantas pessoas têm inglês como sua língua de escolha?
+		df.loc[df['Language'] == 'en']
+		df.loc[(df['Language'] == 'en') & (df['Purchase Price'] == 50.50)]
+	# Quantas pessoas tem cargo de advogado ?
+		df['job'].unique()
+		df['job'][df['job'] == 'Lawyer'].count()
+		df['job'].loc[df['job'].str.contains('engineer',fase=False)].unique()
+	# Alguém fez uma compra que veio do Lot:"90 WT", qual foi o preço de compra para esta transação?
+		df.loc[df['Lot'] == '90 WT']['Purchase Price']
+	# Qual é o e-mail da pessoa com o seguinte número do cartão de crédito: xxx
+		df.loc[df['Credit Card'] == 'xxx'['Email']
+	# Quantas pessoas tem o American Express como seu fornecedor de cartao de credito e fizeram
+	uma compra acima de US $ 95 ?
+		df[(df['CC Provider' == 'American Express') & (df['Purchase Price'] > 95)].count()
+	# Quantas pessoas tem um cartão de crédito que expira em 2025?
+		df.loc[df['CC Exp Date'].str.contains('25')].count()
+	# Quais são os principais provedores de e-mail / hosts mais populares ?
+		df['provedor_email'] = df['Email'].apply(lambda row: row.split('@')['-1])
+		df[['provedor_email','Lot']].groupby('provedor_email').count().sort_values(by='Lot',ascending=False)
+	
+	
+
+	

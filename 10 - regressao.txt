@@ -1,0 +1,45 @@
+import pandas as pd
+import sklearn
+import plotly.graph_objects as go
+from sklearn.model_selection import cros_val_score
+from sklearn.linear_model import LinearRegression
+
+
+//dados de casas, os primeiros dados
+df = pd.read_csv('houses_to_rent_v2.csv')
+
+model = LinearRegression()
+
+x = df[['area'][:100]]//quanto maior a area, mais caro o aluguel?
+y = df[['total (R$)'][:100]]//trabalhar com 100 registros
+
+resultados = cross_val_score(model,x,y)
+
+model.fit(x,y)
+
+//resultados.mean()
+
+valores_preditos = model.predict(df['area'][:100])//valores sado para treinar
+
+valores_preditos,df[['total(R$)']][:100]
+//quanto maior a area, maior o aluguel
+area = df[['area']].sample()
+novo_cliente = model.predict(area)
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=df['area'][:100],y=df['total (R$)'][:100],mode='markers',name = 'Meus Alugueis'))
+fig.add_trace(go.Scatter(x=area.values[0],y=novo_cliente,mode='markers',name = 'Novo Cliente'))
+
+
+#################### REGRESSAO LOGISTICA ####################
+TIPOS:
+Binario: Vovou na ultima eleição: 0(Sim) 1(Nao)
+Categorico ordenado: Concorda ou discorda com a vacina? 0(Nao) 1(Partcialmente) 2(Sim)
+Categorico nao ordenado: Torce para qual time? 0(Brasil) 2(Portugual) 3(Alemanha)
+
+  Aplicando a regressao logistica no problema do desastre do Titanic
+  
+
+
+
+

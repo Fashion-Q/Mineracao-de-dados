@@ -1,0 +1,18 @@
+	- Instalar o python e o pip
+		CMD: pip install virtualenv
+		CMD: where python
+
+	- Adicionar virtualenv na variavel de ambiente
+
+	- Criar uma pasta no CPM para preparar o ambiente
+		CMD: virtualenv venvv
+	- Entrar na pasta de Scripts
+		CMD: activate
+		CMD: pip install pandas
+		CMD: pip install jupyter
+		CMD: pip freeze (Mostra os pacotes instalados)
+		CMD: pip freeze > requeriments.txt (cria um arquivo de todas as bibliotecas e versoes instaladas)
+		CMD: jupyter-notebook 
+		CMD: pip install plotly
+		CMD: pip install -U scikit-learn
+		CMD: pip install pycaret
